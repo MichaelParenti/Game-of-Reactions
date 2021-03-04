@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Button</title>
+    <style>
+        body{
+            margin: 0px;
+            overflow: hidden;
+            background: black;
+            color: white;
+        }
+        @keyframes identifier {
+            0%{top:5vh;}
+            10%{top:20vh;}
+            20%{top:30vh;}
+            30%{top:75vh;}
+            40%{top:25vh;}
+            50%{top:5vh;}
+            60%{top:70vh;}
+            70%{top:70vh}
+            80%{top:60vh;}
+            90%{top:30vh;}
+            100%{top:60vh;}
+        }
+        @keyframes identifier2 {
+            0%{left:5vw;}
+            10%{left:70vw;}
+            20%{left:5vw;}
+            30%{left:70vw;}
+            40%{left:20vw;}
+            50%{left:50vw;}
+            60%{left:70vw;}
+            70%{left:8vw;}
+            80%{left:70vw;}
+            90%{left:50vw;}
+            100%{left:35vw;}
+        }
+        #click{
+            animation: identifier 6s infinite,
+                       identifier2 6s infinite,
+                       blink linear .5s infinite;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            outline: none;
+            border-radius: 25px;
+        }
+        @keyframes blink {
+            0%{box-shadow: 0 0 50px 25px blue;}
+            20%{box-shadow: none;}
+            40%{box-shadow: blue;}
+            60%{box-shadow: none;}
+            80%{box-shadow: blue;}
+            100%{box-shadow: none;}
+        }
+        #modal-background{
+            background: rgba(0,0,0,0.5);
+            min-width: 100vw;
+            min-height: 100vh;
+            z-index: 99999;
+            position: absolute;
+            margin: 0px;
+            top: 0px;
+            left: 0px;
+        }
+        #modal{
+            width: 50vw;
+            height: 30vh;
+            background: white;
+            padding: 4vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size:3vw;
+            margin: 0px;
+            color: black;
+        }
+        #modal button{
+            background: teal;
+            padding: 10px;
+            display: inline-block;
+            align-items: center;
+            color: white;
+            position: absolute;
+            bottom: 25%;
+            font-size:2vw;
+        }
+        #modal #easy{
+            left: 10%;
+        }
+        #modal #hard{
+            right: 10%;
+        }
+        h2{
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Click the button!</h1><br><br><br><br>
+    <button id="click" style="padding:2vw;">Click me</button>
+
+    <div id="modal-background">
+        <div id="modal">
+            <h2>Pick a level:</h2><br>
+            <button id="easy">Easy</button>
+            <button id="medium">Medium</button>
+            <button id="hard">Hard</button>
+        </div>
+    </div>
+    
+    <script>
+        var modal = document.getElementById("modal");
+        var background = document.getElementById("modal-background");
+
+        //Game start and play for each level
+
+            //Level 1
+            document.getElementById("easy").onclick = function(){
+                background.style.zIndex = '-9999';
+                background.style.visibility = 'hidden';
+                document.querySelector("#click").style.visibility = "visible";
+                document.querySelector("h1").innerHTML = 'Click the button!';
+                document.getElementById("click").style.animation = 'identifier 8s infinite,identifier2 8s infinite,blink linear .5s infinite';
+            }
+
+            //Level 2
+            document.getElementById("medium").onclick = function(){
+                background.style.zIndex = '-9999';
+                background.style.visibility = 'hidden';
+                document.querySelector("#click").style.visibility = "visible";
+                document.querySelector("h1").innerHTML = 'Click the button!';
+                document.getElementById("click").style.animation = 'identifier 6s infinite,identifier2 6s infinite,blink linear .5s infinite';
+            }
+
+            //Level 3
+            document.getElementById("hard").onclick = function(){
+                background.style.zIndex = '-9999';
+                background.style.visibility = 'hidden';
+                document.querySelector("#click").style.visibility = "visible";
+                document.querySelector("h1").innerHTML = 'Click the button!';
+                document.getElementById("click").style.animation = 'identifier 4s infinite,identifier2 4s infinite,blink linear .5s infinite';
+            }
+
+
+        //Check for Game Over and Game Reset
+        document.getElementById("click").onclick = function() {
+            document.querySelector("h1").innerHTML = "You did it! <br> Reload the page to play again";
+            document.querySelector("#click").style.visibility = "hidden";
+            background.style.zIndex = '100000';
+            background.style.visibility = 'visible';
+        }
+        
+    </script>
+</body>
+</html>
