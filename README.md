@@ -1,2 +1,2 @@
 # Game-of-Reactions
-A game of reactions that has three levels using HTML/CSS/JS.
+A game of reactions with three different levels using HTML/CSS/JS.
